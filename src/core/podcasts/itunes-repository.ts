@@ -22,7 +22,7 @@ export const ItunesRepository = {
       );
     }
   },
-  async getPostcastById(id: string): Promise<ItunesLookupResponse | undefined> {
+  async getPodcastById(id: string): Promise<ItunesLookupResponse | undefined> {
     try {
       const response = await fetchWithCors<null, ItunesLookupResponse>({
         url: `${import.meta.env.VITE_API_URL}/lookup?id=${id}`,

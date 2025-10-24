@@ -51,7 +51,7 @@ describe('ItunesRepository', () => {
     });
   });
 
-  describe('getPostcastById', () => {
+  describe('getPodcastById', () => {
     it('should fetch podcast by ID successfully', async () => {
       const mockResponse: ItunesLookupResponse = {
         resultCount: 1,
@@ -60,7 +60,7 @@ describe('ItunesRepository', () => {
 
       vi.mocked(fetchWithCors).mockResolvedValue(mockResponse);
 
-      const result = await ItunesRepository.getPostcastById('123');
+      const result = await ItunesRepository.getPodcastById('123');
 
       expect(result).toEqual(mockResponse);
       expect(fetchWithCors).toHaveBeenCalledWith({
@@ -73,7 +73,7 @@ describe('ItunesRepository', () => {
       const error = new Error('Not found');
       vi.mocked(fetchWithCors).mockRejectedValue(error);
 
-      const result = await ItunesRepository.getPostcastById('999');
+      const result = await ItunesRepository.getPodcastById('999');
 
       expect(result).toBeUndefined();
       expect(console.error).toHaveBeenCalledWith(
