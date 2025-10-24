@@ -1,13 +1,11 @@
-import { BrowserRouter } from 'react-router-dom';
+import { RouterProvider } from 'react-router-dom';
 import './App.css';
-import { Header } from './ui/common/components/header';
+import { Routes } from './ui/common/router/index.routes';
 
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <Header />
-      </BrowserRouter>
+      <RouterProvider router={Routes} />
     </>
   );
 }

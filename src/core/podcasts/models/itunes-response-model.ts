@@ -1,3 +1,19 @@
+export interface AllOriginsResponse<T> {
+  status: number;
+  method: string;
+  url: string;
+  response: {
+    contents: T;
+    status: {
+      url: string;
+      content_type: string;
+      http_code: number;
+      response_time: number;
+      content_length: number;
+    };
+  };
+}
+
 export interface ItunesPopularResponse {
   feed: Feed;
 }

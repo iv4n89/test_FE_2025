@@ -13,6 +13,8 @@ export const ItunesRepository = {
         method: 'GET',
       });
 
+      if (!response) throw new Error('No response from Itunes API');
+
       return response;
     } catch (error) {
       console.error(
