@@ -1,22 +1,13 @@
+import { useQuery } from '@tanstack/react-query';
+import { PODCAST_QUERIES } from '../../consts/queries';
 import { getPopularPodcasts } from '@/core/podcasts/itunes-service';
-import type { Entry } from '@/core/podcasts/models/itunes-response-model';
-import React, { useState } from 'react';
 
 export const usePopularPodcasts = () => {
-  const [popularPodcasts, setPopularPodcasts] = useState<Entry[] | undefined>(
-    undefined
-  );
+  const query = useQuery({
+    queryKey: [PODCAST_QUERIES.POPULAR],
+    queryFn: () => getPopularPodcasts(),
+    staleTime: 1000 * 60 * 60 * 24, // 24 hours
+  });
 
-  const fetchPopularPodcasts = async () => {
-    const data = await getPopularPodcasts();
-    setPopularPodcasts(data?.feed?.entry);
-  };
-
-  React.useEffect(() => {
-    fetchPopularPodcasts();
-  }, []);
-
-  return {
-    popularPodcasts,
-  };
+  return query.data ? { popularPodcasts: query.data } : { popularPodcasts: [] };
 };
