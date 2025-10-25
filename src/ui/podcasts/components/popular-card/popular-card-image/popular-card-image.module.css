@@ -1,0 +1,15 @@
+.popular_card_image__wrapper {
+    position: absolute;
+    top: -40px;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.popular_card_image__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

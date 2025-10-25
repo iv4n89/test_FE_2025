@@ -1,7 +1,8 @@
+import { PopularCardsGrid } from '../components/popular-cards-grid';
 import { usePopularPodcasts } from '../hooks/use-popular-podcasts';
 
 export default function Home() {
-  const { popularPodcasts } = usePopularPodcasts();
+  const popularPodcasts = usePopularPodcasts();
 
-  return <pre>{JSON.stringify(popularPodcasts, null, 2)}</pre>;
+  return <PopularCardsGrid data={popularPodcasts || []} />;
 }

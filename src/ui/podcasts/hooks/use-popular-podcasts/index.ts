@@ -9,5 +9,5 @@ export const usePopularPodcasts = () => {
     staleTime: 1000 * 60 * 60 * 24, // 24 hours
   });
 
-  return query.data ? { popularPodcasts: query.data } : { popularPodcasts: [] };
+  return query.data?.feed?.entry;
 };
