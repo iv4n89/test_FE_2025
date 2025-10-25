@@ -1,5 +1,5 @@
 import styles from './loading-dot.module.css';
 
 export const LoadingDot = () => {
-  return <div className={styles.loading__pulse} />;
+  return <div className={styles.loading__pulse} data-testid="loading-dot" />;
 };

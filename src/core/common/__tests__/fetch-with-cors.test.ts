@@ -14,7 +14,7 @@ describe('fetchWithCors', () => {
     const mockResponse = {
       status: 200,
       data: {
-        contents: { message: 'success' },
+        contents: JSON.stringify({ message: 'success' }),
       },
     };
 
@@ -25,10 +25,12 @@ describe('fetchWithCors', () => {
       method: 'GET',
     });
 
+    console.log(result);
+
     expect(result).toEqual({ message: 'success' });
     expect(axios.request).toHaveBeenCalledWith({
       method: 'GET',
-      url: 'https://allorigins.win/get?url=https%3A%2F%2Fexample.com%2Fapi',
+      url: 'https://api.allorigins.win/get?url=https%3A%2F%2Fexample.com%2Fapi',
       params: undefined,
       data: undefined,
       headers: undefined,
@@ -39,7 +41,7 @@ describe('fetchWithCors', () => {
     const mockResponse = {
       status: 201,
       data: {
-        contents: { id: 123 },
+        contents: JSON.stringify({ id: 123 }),
       },
     };
 
@@ -56,7 +58,7 @@ describe('fetchWithCors', () => {
     expect(result).toEqual({ id: 123 });
     expect(axios.request).toHaveBeenCalledWith({
       method: 'POST',
-      url: 'https://allorigins.win/get?url=https%3A%2F%2Fexample.com%2Fapi',
+      url: 'https://api.allorigins.win/get?url=https%3A%2F%2Fexample.com%2Fapi',
       params: { query: 'value' },
       data: { name: 'test' },
       headers: { 'Content-Type': 'application/json' },
