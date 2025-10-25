@@ -18,7 +18,8 @@ export async function fetchWithCors<Body, Resp>({
     });
 
     if (response.status >= 200 && response.status < 300) {
-      return response.data.contents;
+      const parsed = JSON.parse(response.data.contents as string) as Resp;
+      return parsed;
     } else {
       throw new Error(`Request failed with status ${response.status}`);
     }

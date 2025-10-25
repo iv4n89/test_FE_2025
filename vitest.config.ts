@@ -15,7 +15,13 @@ export default defineConfig({
     coverage: {
       provider: 'v8',
       include: ['src/**'],
-      exclude: ['src/main.tsx', 'src/App.tsx', '**/models/**'],
+      exclude: [
+        'src/main.tsx',
+        'src/App.tsx',
+        '**/models/**',
+        '**/consts/**',
+        '**/router/**',
+      ],
       reporter: ['text', 'json', 'html'],
       reportsDirectory: 'coverage',
       enabled: true,
