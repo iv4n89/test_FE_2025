@@ -25,8 +25,6 @@ describe('fetchWithCors', () => {
       method: 'GET',
     });
 
-    console.log(result);
-
     expect(result).toEqual({ message: 'success' });
     expect(axios.request).toHaveBeenCalledWith({
       method: 'GET',

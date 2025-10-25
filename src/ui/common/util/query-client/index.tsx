@@ -2,7 +2,7 @@ import { createAsyncStoragePersister } from '@tanstack/query-async-storage-persi
 import { QueryClient } from '@tanstack/react-query';
 import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client';
 
-const PERSITER_KEY = 'react-query-podcasts-app';
+const PERSISTER_KEY = 'react-query-podcasts-app';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -15,7 +15,7 @@ const queryClient = new QueryClient({
 
 const persister = createAsyncStoragePersister({
   storage: window.localStorage,
-  key: PERSITER_KEY,
+  key: PERSISTER_KEY,
 });
 
 interface Props {
@@ -27,7 +27,7 @@ export const QueryProviderClient = ({ children }: Props) => {
     <PersistQueryClientProvider
       client={queryClient}
       persistOptions={{ persister }}
-      key={PERSITER_KEY}
+      key={PERSISTER_KEY}
     >
       {children}
     </PersistQueryClientProvider>

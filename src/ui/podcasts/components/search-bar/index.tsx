@@ -9,7 +9,7 @@ interface Props {
 
 export const SearchBar = ({ onChange, resultCount, value, testid }: Props) => {
   return (
-    <div data-testid={testid} className={styles.seach_bar__container}>
+    <div data-testid={testid} className={styles.search_bar__container}>
       <div className={styles.search_bar__badge}>{resultCount}</div>
       <input
         type="text"
