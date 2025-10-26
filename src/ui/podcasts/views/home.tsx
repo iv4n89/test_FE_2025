@@ -3,9 +3,10 @@ import { PopularCardsGrid } from '../components/popular-cards-grid';
 import { SearchBar } from '../components/search-bar';
 import { usePodcastSearch } from '../hooks/use-podcast-search';
 import { usePopularPodcasts } from '../hooks/use-popular-podcasts';
+import { HomeSkeleton } from '../components/home-skeleton';
 
 export default function Home() {
-  const { data: popularPodcasts } = usePopularPodcasts();
+  const { data: popularPodcasts, isLoading } = usePopularPodcasts();
   const { filteredPodcasts, resultCount, searchTerm, setSearchTerm } =
     usePodcastSearch(popularPodcasts);
 
@@ -15,8 +16,12 @@ export default function Home() {
     });
   };
 
+  if (isLoading) {
+    return <HomeSkeleton />;
+  }
+
   return (
-    <React.Suspense fallback={<></>}>
+    <React.Suspense fallback={<HomeSkeleton />}>
       <SearchBar
         onChange={handleSearch}
         value={searchTerm}

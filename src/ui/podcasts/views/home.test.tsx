@@ -57,6 +57,7 @@ describe('Home', () => {
     vi.mocked(usePopularPodcasts).mockReturnValue({
       data: mockPopularPodcasts,
       getPodcastDescriptionById: vi.fn(),
+      isLoading: false,
     });
     vi.mocked(usePodcastSearch).mockReturnValue({
       filteredPodcasts: mockPopularPodcasts,
@@ -129,6 +130,7 @@ describe('Home', () => {
     vi.mocked(usePopularPodcasts).mockReturnValue({
       data: [],
       getPodcastDescriptionById: vi.fn(),
+      isLoading: false,
     });
     vi.mocked(usePodcastSearch).mockReturnValue({
       filteredPodcasts: [],
