@@ -1,0 +1,18 @@
+.podcast_episode__container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 0;
+}
+
+.podcast_episode__description {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+}
+
+.podcast_episode__audio_player {
+    width: 100%;
+}
