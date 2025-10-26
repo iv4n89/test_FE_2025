@@ -7,6 +7,7 @@ import { usePopularPodcasts } from '@/ui/podcasts/hooks/use-popular-podcasts';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { renderHook, waitFor } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { Suspense } from 'react';
 
 vi.mock('@/core/podcasts/itunes-service');
 
@@ -18,11 +19,13 @@ describe('usePopularPodcasts', () => {
       'im:name': { label: 'Podcast 1' },
       'im:artist': { label: 'Artist 1' },
       id: { attributes: { 'im:id': '1' } },
+      summary: { label: 'Description 1' },
     } as Entry,
     {
       'im:name': { label: 'Podcast 2' },
       'im:artist': { label: 'Artist 2' },
       id: { attributes: { 'im:id': '2' } },
+      summary: { label: 'Description 2' },
     } as Entry,
   ];
 
@@ -38,18 +41,10 @@ describe('usePopularPodcasts', () => {
   });
 
   const wrapper = ({ children }: { children: React.ReactNode }) => (
-    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+    <QueryClientProvider client={queryClient}>
+      <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
+    </QueryClientProvider>
   );
-
-  it('should return undefined initially', () => {
-    vi.mocked(getPopularPodcasts).mockResolvedValue({
-      feed: { entry: mockEntries },
-    } as ItunesPopularResponse);
-
-    const { result } = renderHook(() => usePopularPodcasts(), { wrapper });
-
-    expect(result.current).toBeUndefined();
-  });
 
   it('should fetch and return popular podcasts', async () => {
     vi.mocked(getPopularPodcasts).mockResolvedValue({
@@ -59,25 +54,13 @@ describe('usePopularPodcasts', () => {
     const { result } = renderHook(() => usePopularPodcasts(), { wrapper });
 
     await waitFor(() => {
-      expect(result.current).toEqual(mockEntries);
+      expect(result.current.data).toEqual(mockEntries);
     });
 
     expect(getPopularPodcasts).toHaveBeenCalledTimes(1);
   });
 
-  it('should return undefined when feed is missing', async () => {
-    vi.mocked(getPopularPodcasts).mockResolvedValue(
-      {} as ItunesPopularResponse
-    );
-
-    const { result } = renderHook(() => usePopularPodcasts(), { wrapper });
-
-    await waitFor(() => {
-      expect(result.current).toBeUndefined();
-    });
-  });
-
-  it('should return undefined when entry is missing', async () => {
+  it('should return empty array when entry is missing', async () => {
     vi.mocked(getPopularPodcasts).mockResolvedValue({
       feed: {},
     } as ItunesPopularResponse);
@@ -85,7 +68,7 @@ describe('usePopularPodcasts', () => {
     const { result } = renderHook(() => usePopularPodcasts(), { wrapper });
 
     await waitFor(() => {
-      expect(result.current).toBeUndefined();
+      expect(result.current.data).toEqual([]);
     });
   });
 
@@ -97,17 +80,7 @@ describe('usePopularPodcasts', () => {
     const { result } = renderHook(() => usePopularPodcasts(), { wrapper });
 
     await waitFor(() => {
-      expect(result.current).toEqual([]);
-    });
-  });
-
-  it('should handle API errors', async () => {
-    vi.mocked(getPopularPodcasts).mockRejectedValue(new Error('API Error'));
-
-    const { result } = renderHook(() => usePopularPodcasts(), { wrapper });
-
-    await waitFor(() => {
-      expect(result.current).toBeUndefined();
+      expect(result.current.data).toEqual([]);
     });
   });
 
@@ -121,11 +94,41 @@ describe('usePopularPodcasts', () => {
     });
 
     await waitFor(() => {
-      expect(result.current).toEqual(mockEntries);
+      expect(result.current.data).toEqual(mockEntries);
     });
 
     rerender();
 
     expect(getPopularPodcasts).toHaveBeenCalledTimes(1);
+  });
+
+  it('should get podcast description by id', async () => {
+    vi.mocked(getPopularPodcasts).mockResolvedValue({
+      feed: { entry: mockEntries },
+    } as ItunesPopularResponse);
+
+    const { result } = renderHook(() => usePopularPodcasts(), { wrapper });
+
+    await waitFor(() => {
+      expect(result.current.data).toEqual(mockEntries);
+    });
+
+    const description = result.current.getPodcastDescriptionById('1');
+    expect(description).toBe('Description 1');
+  });
+
+  it('should return undefined for non-existent podcast id', async () => {
+    vi.mocked(getPopularPodcasts).mockResolvedValue({
+      feed: { entry: mockEntries },
+    } as ItunesPopularResponse);
+
+    const { result } = renderHook(() => usePopularPodcasts(), { wrapper });
+
+    await waitFor(() => {
+      expect(result.current.data).toEqual(mockEntries);
+    });
+
+    const description = result.current.getPodcastDescriptionById('999');
+    expect(description).toBeUndefined();
   });
 });

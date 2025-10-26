@@ -1,6 +1,6 @@
-import { QueryProviderClient } from '@/ui/common/util/query-client';
 import { render, screen, waitFor } from '@testing-library/react';
 import { beforeEach, describe, expect, it } from 'vitest';
+import { QueryProviderClient } from './query-client-provider';
 
 describe('QueryProviderClient', () => {
   beforeEach(() => {

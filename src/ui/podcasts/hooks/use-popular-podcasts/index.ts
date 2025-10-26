@@ -1,6 +1,6 @@
+import { getPopularPodcasts } from '@/core/podcasts/itunes-service';
 import { useQuery } from '@tanstack/react-query';
 import { PODCAST_QUERIES } from '../../consts/queries';
-import { getPopularPodcasts } from '@/core/podcasts/itunes-service';
 
 export const usePopularPodcasts = () => {
   const query = useQuery({
@@ -9,5 +9,15 @@ export const usePopularPodcasts = () => {
     staleTime: 1000 * 60 * 60 * 24, // 24 hours
   });
 
-  return query.data?.feed?.entry;
+  const getPodcastDescriptionById = (id: string) => {
+    return query.data?.feed?.entry.find(
+      (podcast) => podcast.id.attributes['im:id'] === id
+    )?.summary.label;
+  };
+
+  return {
+    data: query.data?.feed?.entry || [],
+    isLoading: query.isLoading,
+    getPodcastDescriptionById,
+  };
 };
