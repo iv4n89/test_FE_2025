@@ -4,6 +4,7 @@ import { BaseLayout } from '@/ui/common/components/layout/base-layout';
 
 vi.mock('react-router-dom', () => ({
   Outlet: () => <div data-testid="outlet">Outlet Content</div>,
+  ScrollRestoration: () => <div data-testid="scroll-restoration" />,
 }));
 
 vi.mock('@/ui/common/components/header', () => ({

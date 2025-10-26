@@ -30,7 +30,7 @@ export const ItunesRepository = {
   ): Promise<ItunesDetailsResponse[] | undefined> {
     try {
       const response = await fetchWithCors<null, ItunesLookupResponse>({
-        url: `${import.meta.env.VITE_API_URL}/lookup?id=${id}&media=podcast&entity=podcastEpisode`,
+        url: `${import.meta.env.VITE_API_URL}/lookup?id=${id}&media=podcast&entity=podcastEpisode&limit=1000`,
         method: 'GET',
       });
 

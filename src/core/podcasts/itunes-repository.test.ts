@@ -64,7 +64,7 @@ describe('ItunesRepository', () => {
 
       expect(result).toEqual(mockResponse.results);
       expect(fetchWithCors).toHaveBeenCalledWith({
-        url: `${import.meta.env.VITE_API_URL}/lookup?id=123&media=podcast&entity=podcastEpisode`,
+        url: `${import.meta.env.VITE_API_URL}/lookup?id=123&media=podcast&entity=podcastEpisode&limit=1000`,
         method: 'GET',
       });
     });
