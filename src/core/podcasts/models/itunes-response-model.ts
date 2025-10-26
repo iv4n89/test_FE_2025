@@ -120,9 +120,11 @@ export interface Link {
 
 export type Rel = 'alternate' | 'self';
 
+export type ItunesDetailsResponse = ItunesLookupResult & ITunesEpisode;
+
 export interface ItunesLookupResponse {
   resultCount: number;
-  results: ItunesLookupResult[];
+  results: ItunesDetailsResponse[];
 }
 
 export interface ItunesLookupResult {
@@ -156,4 +158,35 @@ export interface ItunesLookupResult {
   artworkUrl600: string;
   genreIds: string[];
   genres: string[];
+}
+
+export interface ITunesEpisode {
+  artworkUrl600: string;
+  artistIds: number[];
+  genres: {
+    name: string;
+    id: string;
+  }[];
+  episodeGuid: string;
+  releaseDate: string;
+  trackId: number;
+  trackName: string;
+  trackViewUrl: string;
+  trackTimeMillis: number;
+  shortDescription: string;
+  feedUrl: string;
+  closedCaptioning: string;
+  collectionId: number;
+  collectionName: string;
+  kind: string;
+  wrapperType: string;
+  description: string;
+  country: string;
+  previewUrl: string;
+  artworkUrl160: string;
+  episodeUrl: string;
+  artistViewUrl: string;
+  contentAdvisoryRating: string;
+  episodeFileExtension: string;
+  episodeContentType: string;
 }

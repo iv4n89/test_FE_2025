@@ -1,11 +1,11 @@
-import { startTransition } from 'react';
+import React, { startTransition } from 'react';
 import { PopularCardsGrid } from '../components/popular-cards-grid';
 import { SearchBar } from '../components/search-bar';
 import { usePodcastSearch } from '../hooks/use-podcast-search';
 import { usePopularPodcasts } from '../hooks/use-popular-podcasts';
 
 export default function Home() {
-  const popularPodcasts = usePopularPodcasts();
+  const { data: popularPodcasts } = usePopularPodcasts();
   const { filteredPodcasts, resultCount, searchTerm, setSearchTerm } =
     usePodcastSearch(popularPodcasts);
 
@@ -16,7 +16,7 @@ export default function Home() {
   };
 
   return (
-    <>
+    <React.Suspense fallback={<></>}>
       <SearchBar
         onChange={handleSearch}
         value={searchTerm}
@@ -24,6 +24,6 @@ export default function Home() {
         testid="podcast-search-bar"
       />
       <PopularCardsGrid data={filteredPodcasts} />
-    </>
+    </React.Suspense>
   );
 }

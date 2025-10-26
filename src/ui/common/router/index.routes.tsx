@@ -1,7 +1,6 @@
-import { createBrowserRouter, type RouteObject } from 'react-router-dom';
 import { BaseLayout } from '@/ui/common/components/layout/base-layout';
 import Home from '@/ui/podcasts/views/home';
-import { preloadPodcastDetail } from './preloaders';
+import { createBrowserRouter, type RouteObject } from 'react-router-dom';
 
 const routes: RouteObject[] = [
   {
@@ -11,10 +10,6 @@ const routes: RouteObject[] = [
       {
         index: true,
         element: <Home />,
-        loader: () => {
-          preloadPodcastDetail();
-          return null;
-        },
       },
       {
         path: 'podcast/:podcastId',

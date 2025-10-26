@@ -1,1 +1,11 @@
-
+:root {
+    --box-shadow-default: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --box-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.15);
+    --primary-background-color: #fff;
+    --info-background-color: #3271a9;
+    --border-color: #ddd;
+    --primary-text-color: #000;
+    --secondary-text-color: #666;
+    --placeholder-text-color: #999;
+    --main-border-radius: 4px;
+}
