@@ -20,6 +20,15 @@ const routes: RouteObject[] = [
           return { Component: PodcastDetail };
         },
       },
+      {
+        path: 'podcast/:podcastId/episode/:episodeId',
+        lazy: async () => {
+          const { default: Episode } = await import(
+            '@/ui/podcasts/views/episode'
+          );
+          return { Component: Episode };
+        },
+      },
     ],
   },
 ];
