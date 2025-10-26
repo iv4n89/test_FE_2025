@@ -16,7 +16,7 @@ export default function Episode() {
   });
 
   if (!episodeId || !podcastId) {
-    return;
+    return null;
   }
 
   return (

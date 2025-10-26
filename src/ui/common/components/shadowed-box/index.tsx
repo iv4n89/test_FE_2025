@@ -10,7 +10,7 @@ interface Props {
 export const ShadowedBox = ({ children, className, testid }: Props) => {
   return (
     <div
-      className={`${styles.shadowed_box__container} ${className}`}
+      className={`${styles.shadowed_box__container} ${className?.length ? className : ''}`}
       data-testid={testid}
     >
       {children}
