@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import axios from 'axios';
-import { fetchWithCors } from '../fetch-with-cors';
+import { fetchWithCors } from '@/core/common/fetch-with-cors';
 
 vi.mock('axios');
 

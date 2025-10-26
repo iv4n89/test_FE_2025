@@ -1,10 +1,10 @@
-import { usePopularPodcasts } from '@/ui/podcasts/hooks/use-popular-podcasts';
-import { usePodcastSearch } from '@/ui/podcasts/hooks/use-podcast-search';
 import type { Entry } from '@/core/podcasts/models/itunes-response-model';
-import { render, screen } from '@testing-library/react';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { usePodcastSearch } from '@/ui/podcasts/hooks/use-podcast-search';
+import { usePopularPodcasts } from '@/ui/podcasts/hooks/use-popular-podcasts';
 import Home from '@/ui/podcasts/views/home';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 vi.mock('@/ui/podcasts/hooks/use-popular-podcasts');
 vi.mock('@/ui/podcasts/hooks/use-podcast-search');
@@ -54,7 +54,10 @@ describe('Home', () => {
 
   beforeEach(() => {
     vi.clearAllMocks();
-    vi.mocked(usePopularPodcasts).mockReturnValue(mockPopularPodcasts);
+    vi.mocked(usePopularPodcasts).mockReturnValue({
+      data: mockPopularPodcasts,
+      getPodcastDescriptionById: vi.fn(),
+    });
     vi.mocked(usePodcastSearch).mockReturnValue({
       filteredPodcasts: mockPopularPodcasts,
       resultCount: 2,
@@ -122,8 +125,11 @@ describe('Home', () => {
     expect(screen.getByText('1 podcasts')).toBeDefined();
   });
 
-  it('should handle undefined popular podcasts', () => {
-    vi.mocked(usePopularPodcasts).mockReturnValue(undefined);
+  it('should handle empty array popular podcasts', () => {
+    vi.mocked(usePopularPodcasts).mockReturnValue({
+      data: [],
+      getPodcastDescriptionById: vi.fn(),
+    });
     vi.mocked(usePodcastSearch).mockReturnValue({
       filteredPodcasts: [],
       resultCount: 0,

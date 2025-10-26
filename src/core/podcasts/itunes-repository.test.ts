@@ -62,9 +62,9 @@ describe('ItunesRepository', () => {
 
       const result = await ItunesRepository.getPodcastById('123');
 
-      expect(result).toEqual(mockResponse);
+      expect(result).toEqual(mockResponse.results);
       expect(fetchWithCors).toHaveBeenCalledWith({
-        url: `${import.meta.env.VITE_API_URL}/lookup?id=123`,
+        url: `${import.meta.env.VITE_API_URL}/lookup?id=123&media=podcast&entity=podcastEpisode`,
         method: 'GET',
       });
     });

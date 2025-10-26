@@ -1,12 +1,12 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { getPopularPodcasts, getPodcastDetails } from '../itunes-service';
-import { ItunesRepository } from '../itunes-repository';
+import { getPopularPodcasts, getPodcastDetails } from './itunes-service';
+import { ItunesRepository } from './itunes-repository';
 import type {
   ItunesLookupResponse,
   ItunesPopularResponse,
-} from '../models/itunes-response-model';
+} from './models/itunes-response-model';
 
-vi.mock('../itunes-repository');
+vi.mock('./itunes-repository');
 
 describe('itunes-service', () => {
   beforeEach(() => {
@@ -54,11 +54,13 @@ describe('itunes-service', () => {
         results: [{ trackId: 123, collectionName: 'Test Podcast' }],
       } as ItunesLookupResponse;
 
-      vi.mocked(ItunesRepository.getPodcastById).mockResolvedValue(mockPodcast);
+      vi.mocked(ItunesRepository.getPodcastById).mockResolvedValue(
+        mockPodcast.results
+      );
 
       const result = await getPodcastDetails('123');
 
-      expect(result).toEqual(mockPodcast);
+      expect(result).toEqual(mockPodcast.results);
       expect(ItunesRepository.getPodcastById).toHaveBeenCalledWith('123');
       expect(ItunesRepository.getPodcastById).toHaveBeenCalledOnce();
     });
