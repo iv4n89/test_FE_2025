@@ -16,7 +16,7 @@ export const usePopularPodcasts = () => {
   };
 
   return {
-    data: query.data?.feed.entry || [],
+    data: query.data?.feed?.entry || [],
     isLoading: query.isLoading,
     getPodcastDescriptionById,
   };

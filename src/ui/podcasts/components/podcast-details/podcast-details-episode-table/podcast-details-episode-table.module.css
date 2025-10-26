@@ -1,7 +1,7 @@
 .podcast_details_episode_table__container {
-  background: white;
+  background: var(--primary-background-color);
   border-radius: 4px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--box-shadow-default);
   overflow: hidden;
   padding: 16px;
 }
@@ -12,7 +12,7 @@
 }
 
 .podcast_details_episode_table__header {
-  background-color: #fff;
+  background-color: var(--primary-background-color);
 }
 
 .podcast_details_episode_table__headerCell {
@@ -21,11 +21,11 @@
   font-weight: bold;
   font-size: 14px;
   color: #000;
-  border-bottom: 2px solid #ddd;
+  border-bottom: 2px solid var(--border-color);
 }
 
 .podcast_details_episode_table__rowEven {
-  background-color: #ffffff;
+  background-color: var(--primary-background-color);
   &:hover {
     background-color: #f1f1f1;
   }
@@ -42,11 +42,11 @@
   padding: 12px 16px;
   font-size: 14px;
   color: #333;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .podcast_details_episode_table__link {
-  color: #3271a9;
+  color: var(--info-background-color);
   text-decoration: none;
   transition: color 0.2s;
   &:hover {
