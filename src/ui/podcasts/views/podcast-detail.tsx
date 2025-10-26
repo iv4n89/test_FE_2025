@@ -4,7 +4,6 @@ import { usePodcastDetails } from '../hooks/use-podcast-details';
 import React from 'react';
 
 export function PodcastDetail() {
-  // obtain podcastId from route params
   const { podcastId } = useParams<{ podcastId: string }>();
 
   const { info, episodes } = usePodcastDetails(podcastId || '');

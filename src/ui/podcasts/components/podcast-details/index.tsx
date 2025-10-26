@@ -21,7 +21,10 @@ export const PodcastDetails = ({
   description,
 }: Props) => {
   return (
-    <div className={styles.podcast_details__container}>
+    <div
+      className={styles.podcast_details__container}
+      data-testid="podcast-details"
+    >
       <aside className={styles.podcast_details__sidebar}>
         <PodcastDescriptionCard
           author={info.artistName}
