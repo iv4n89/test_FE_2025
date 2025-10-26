@@ -1,8 +1,5 @@
 import { getPodcastDetails } from '@/core/podcasts/itunes-service';
-import type {
-  ITunesEpisode,
-  ItunesLookupResult,
-} from '@/core/podcasts/models/itunes-response-model';
+import type { ItunesLookupResult } from '@/core/podcasts/models/itunes-response-model';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import React from 'react';
 import { PODCAST_QUERIES } from '../../consts/queries';
@@ -19,11 +16,11 @@ export const usePodcastDetails = (podcastId: string) => {
     refetchOnWindowFocus: false,
   });
 
-  const info: ItunesLookupResult = React.useMemo(() => {
-    return query.data?.at(0) || ({} as ItunesLookupResult);
+  const info = React.useMemo(() => {
+    return query.data?.at(0) as ItunesLookupResult;
   }, [query.data]);
 
-  const episodes: ITunesEpisode[] = React.useMemo(() => {
+  const episodes = React.useMemo(() => {
     return (
       query.data?.filter((podcast) => podcast.kind === 'podcast-episode') || []
     );

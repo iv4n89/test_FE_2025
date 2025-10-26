@@ -128,45 +128,20 @@ export interface ItunesLookupResponse {
 }
 
 export interface ItunesLookupResult {
-  wrapperType: string;
   kind: string;
   collectionId: number;
   trackId: number;
   artistName: string;
   collectionName: string;
   trackName: string;
-  collectionCensoredName: string;
-  trackCensoredName: string;
-  collectionViewUrl: string;
-  feedUrl: string;
-  trackViewUrl: string;
-  artworkUrl30: string;
-  artworkUrl60: string;
   artworkUrl100: string;
-  collectionPrice: number;
-  trackPrice: number;
-  collectionHdPrice: number;
-  releaseDate: Date;
-  collectionExplicitness: string;
-  trackExplicitness: string;
   trackCount: number;
-  trackTimeMillis: number;
-  country: string;
-  currency: string;
-  primaryGenreName: string;
-  contentAdvisoryRating: string;
   artworkUrl600: string;
-  genreIds: string[];
-  genres: string[];
 }
 
 export interface ITunesEpisode {
   artworkUrl600: string;
   artistIds: number[];
-  genres: {
-    name: string;
-    id: string;
-  }[];
   episodeGuid: string;
   releaseDate: string;
   trackId: number;
@@ -174,19 +149,14 @@ export interface ITunesEpisode {
   trackViewUrl: string;
   trackTimeMillis: number;
   shortDescription: string;
-  feedUrl: string;
   closedCaptioning: string;
   collectionId: number;
   collectionName: string;
   kind: string;
-  wrapperType: string;
   description: string;
   country: string;
   previewUrl: string;
   artworkUrl160: string;
   episodeUrl: string;
-  artistViewUrl: string;
-  contentAdvisoryRating: string;
   episodeFileExtension: string;
-  episodeContentType: string;
 }

@@ -17,7 +17,7 @@ export function PodcastDetail() {
       <PodcastDetails
         episodes={episodes}
         info={info}
-        description={info?.description || ''}
+        description={info.description || ''}
         podcastId={podcastId || ''}
       />
     </React.Suspense>

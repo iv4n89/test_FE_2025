@@ -38,10 +38,7 @@ export const PodcastDetails = ({
       </aside>
       <section className={styles.podcast_details__main}>
         <PodcastDetailsEpisodeCountBadge count={info?.trackCount || 0} />
-        <PodcastDetailsEpisodeTable
-          episodes={episodes}
-          podcastId={podcastId || ''}
-        />
+        <PodcastDetailsEpisodeTable episodes={episodes} podcastId={podcastId} />
       </section>
     </div>
   );
