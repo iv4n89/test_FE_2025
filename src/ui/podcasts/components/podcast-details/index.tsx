@@ -2,10 +2,11 @@ import type {
   ITunesEpisode,
   ItunesLookupResult,
 } from '@/core/podcasts/models/itunes-response-model';
-import styles from './podcast-details.module.css';
 import { PodcastDescriptionCard } from '../podcast-description-card';
+import { PodcastDetailsContainer } from '../podcast-details-container';
 import { PodcastDetailsEpisodeCountBadge } from './podcast-details-episode-count-badge';
 import { PodcastDetailsEpisodeTable } from './podcast-details-episode-table';
+import styles from './podcast-details.module.css';
 
 interface Props {
   info: ItunesLookupResult;
@@ -21,25 +22,14 @@ export const PodcastDetails = ({
   description,
 }: Props) => {
   return (
-    <div
-      className={styles.podcast_details__container}
-      data-testid="podcast-details"
-    >
+    <PodcastDetailsContainer data-testid="podcast-details">
       <aside className={styles.podcast_details__sidebar}>
-        <PodcastDescriptionCard
-          author={info.artistName}
-          description={description}
-          image={{
-            src: info.artworkUrl600,
-            alt: info.collectionName,
-          }}
-          name={info.collectionName}
-        />
+        <PodcastDescriptionCard data={info} description={description} />
       </aside>
       <section className={styles.podcast_details__main}>
         <PodcastDetailsEpisodeCountBadge count={info?.trackCount || 0} />
         <PodcastDetailsEpisodeTable episodes={episodes} podcastId={podcastId} />
       </section>
-    </div>
+    </PodcastDetailsContainer>
   );
 };

@@ -1,34 +1,59 @@
+import type { ItunesLookupResult } from '@/core/podcasts/models/itunes-response-model';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './podcast-description-card.module.css';
+import { ShadowedBox } from '@/ui/common/components/shadowed-box';
 
 interface Props {
-  name: string;
-  author: string;
+  data: ItunesLookupResult;
   description: string;
-  image: {
-    src: string;
-    alt: string;
-  };
+  isLinksActive?: boolean;
+  testid?: string;
 }
 
 export const PodcastDescriptionCard = ({
-  author,
+  data,
   description,
-  image,
-  name,
+  isLinksActive = false,
+  testid,
 }: Props) => {
+  const LinkContainer = isLinksActive
+    ? ({ children }: { children: React.ReactNode }) => (
+        <Link
+          style={{ textDecoration: 'none' }}
+          to={`/podcast/${data.collectionId}`}
+        >
+          {children}
+        </Link>
+      )
+    : ({ children }: { children: React.ReactNode }) => <>{children}</>;
+
   return (
-    <div className={styles.podcast_description_card__container}>
+    <ShadowedBox
+      testid={testid}
+      className={styles.podcast_description_card__container}
+    >
       <div className={styles.podcast_description_card__image_wrapper}>
-        <img
-          src={image.src}
-          alt={image.alt}
-          className={styles.podcast_description_card__image}
-        />
+        <LinkContainer>
+          <img
+            src={data.artworkUrl600}
+            alt={data.collectionName}
+            className={styles.podcast_description_card__image}
+          />
+        </LinkContainer>
       </div>
       <div className={styles.podcast_description_card__divider}></div>
       <div className={styles.podcast_description_card__info}>
-        <h2 className={styles.podcast_description_card__name}>{name}</h2>
-        <p className={styles.podcast_description_card__author}>by {author}</p>
+        <LinkContainer>
+          <h2 className={styles.podcast_description_card__name}>
+            {data.collectionName}
+          </h2>
+        </LinkContainer>
+        <LinkContainer>
+          <p className={styles.podcast_description_card__author}>
+            by {data.artistName}
+          </p>
+        </LinkContainer>
       </div>
       <div className={styles.podcast_description_card__divider}></div>
       <div className={styles.podcast_description_card__description}>
@@ -39,6 +64,6 @@ export const PodcastDescriptionCard = ({
           {description}
         </p>
       </div>
-    </div>
+    </ShadowedBox>
   );
 };
