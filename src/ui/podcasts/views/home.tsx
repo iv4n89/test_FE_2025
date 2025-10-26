@@ -1,9 +1,9 @@
 import React, { startTransition } from 'react';
-import { PopularCardsGrid } from '../components/popular-cards-grid';
-import { SearchBar } from '../components/search-bar';
-import { usePodcastSearch } from '../hooks/use-podcast-search';
-import { usePopularPodcasts } from '../hooks/use-popular-podcasts';
-import { HomeSkeleton } from '../components/home-skeleton';
+import { PreviewGrid } from '../components/preview-card/preview-grid/preview-grid';
+import { SearchBar } from '../components/search-bar/search-bar';
+import { usePodcastSearch } from '../hooks/use-podcast-search/use-podcast-search';
+import { usePopularPodcasts } from '../hooks/use-popular-podcasts/use-popular-podcasts';
+import { HomeSkeleton } from '../components/home-skeleton/home-skeleton';
 
 export default function Home() {
   const { data: popularPodcasts, isLoading } = usePopularPodcasts();
@@ -28,7 +28,7 @@ export default function Home() {
         resultCount={resultCount}
         testid="podcast-search-bar"
       />
-      <PopularCardsGrid data={filteredPodcasts} />
+      <PreviewGrid data={filteredPodcasts} />
     </React.Suspense>
   );
 }

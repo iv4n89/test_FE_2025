@@ -1,6 +1,6 @@
 import { RouterProvider } from 'react-router-dom';
 import './App.css';
-import { Routes } from './ui/common/router/index.routes';
+import { Routes } from './ui/common/router/routes';
 import { QueryProviderClient } from './ui/common/util/query-client/query-client-provider';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 

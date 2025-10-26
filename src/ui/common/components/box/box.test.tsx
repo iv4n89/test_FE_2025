@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import { Box } from '@/ui/common/components/box';
+import { Box } from '@/ui/common/components/box/box';
 
 describe('Box', () => {
   it('renders children', () => {

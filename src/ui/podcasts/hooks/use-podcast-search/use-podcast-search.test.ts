@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { renderHook, act } from '@testing-library/react';
-import { usePodcastSearch } from '@/ui/podcasts/hooks/use-podcast-search';
+import { usePodcastSearch } from '@/ui/podcasts/hooks/use-podcast-search/use-podcast-search';
 import type { Entry } from '@/core/podcasts/models/itunes-response-model';
 
 describe('usePodcastSearch', () => {

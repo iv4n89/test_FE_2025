@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { formatDuration } from './index';
+import { formatDuration } from './format-duration';
 
 describe('formatDuration', () => {
   it('formats duration with hours, minutes, and seconds', () => {

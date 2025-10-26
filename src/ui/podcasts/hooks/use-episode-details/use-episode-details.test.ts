@@ -1,8 +1,8 @@
 import { renderHook } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi, type Mock } from 'vitest';
-import { useEpisodeDetails } from './index';
-import { usePodcastDetails } from '../use-podcast-details';
-import { usePopularPodcasts } from '../use-popular-podcasts';
+import { useEpisodeDetails } from './use-episode-details';
+import { usePodcastDetails } from '../use-podcast-details/use-podcast-details';
+import { usePopularPodcasts } from '../use-popular-podcasts/use-popular-podcasts';
 
 vi.mock('../use-podcast-details', () => ({
   usePodcastDetails: vi.fn(),

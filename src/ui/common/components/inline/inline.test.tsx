@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import { Inline } from '@/ui/common/components/inline';
+import { Inline } from '@/ui/common/components/inline/inline';
 
 describe('Inline', () => {
   it('renders children', () => {

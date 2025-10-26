@@ -1,6 +1,6 @@
 import type { Entry } from '@/core/podcasts/models/itunes-response-model';
-import { usePodcastSearch } from '@/ui/podcasts/hooks/use-podcast-search';
-import { usePopularPodcasts } from '@/ui/podcasts/hooks/use-popular-podcasts';
+import { usePodcastSearch } from '@/ui/podcasts/hooks/use-podcast-search/use-podcast-search';
+import { usePopularPodcasts } from '@/ui/podcasts/hooks/use-popular-podcasts/use-popular-podcasts';
 import Home from '@/ui/podcasts/views/home';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
