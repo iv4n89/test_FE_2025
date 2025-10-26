@@ -1,0 +1,19 @@
+
+.podcast_details__container {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 60px;
+    padding: 0 20px;
+    align-items: start;    
+}
+
+.podcast_details__sidebar {
+    position: sticky;
+    top: 68px;
+}
+
+.podcast_details__main {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
