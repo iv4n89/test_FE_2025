@@ -22,6 +22,7 @@ export const PodcastEpisode = ({ audioUrl, description, name }: Props) => {
         src={audioUrl}
         controls
         className={styles.podcast_episode__audio_player}
+        data-testid="podcast-episode-audio-player"
       />
     </ShadowedBox>
   );
