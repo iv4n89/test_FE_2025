@@ -28,7 +28,7 @@ describe('fetchWithCors', () => {
     expect(result).toEqual({ message: 'success' });
     expect(axios.request).toHaveBeenCalledWith({
       method: 'GET',
-      url: 'https://api.allorigins.win/get?url=https%3A%2F%2Fexample.com%2Fapi',
+      url: 'https://whateverorigin.org/get?url=https%3A%2F%2Fexample.com%2Fapi',
       params: undefined,
       data: undefined,
       headers: undefined,
@@ -56,7 +56,7 @@ describe('fetchWithCors', () => {
     expect(result).toEqual({ id: 123 });
     expect(axios.request).toHaveBeenCalledWith({
       method: 'POST',
-      url: 'https://api.allorigins.win/get?url=https%3A%2F%2Fexample.com%2Fapi',
+      url: 'https://whateverorigin.org/get?url=https%3A%2F%2Fexample.com%2Fapi',
       params: { query: 'value' },
       data: { name: 'test' },
       headers: { 'Content-Type': 'application/json' },
