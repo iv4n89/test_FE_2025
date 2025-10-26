@@ -5,7 +5,7 @@ import { PodcastDetail } from './podcast-detail';
 import { usePodcastDetails } from '../hooks/use-podcast-details/use-podcast-details';
 
 // Mock the usePodcastDetails hook
-vi.mock('../hooks/use-podcast-details', () => ({
+vi.mock('../hooks/use-podcast-details/use-podcast-details', () => ({
   usePodcastDetails: vi.fn(),
 }));
 

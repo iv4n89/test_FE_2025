@@ -40,9 +40,10 @@ describe('ItunesRepository', () => {
       const error = new Error('Network error');
       vi.mocked(fetchWithCors).mockRejectedValue(error);
 
-      const result = await ItunesRepository.getMostPopularPodcasts();
+      await expect(ItunesRepository.getMostPopularPodcasts()).rejects.toThrow(
+        error
+      );
 
-      expect(result).toBeUndefined();
       expect(console.error).toHaveBeenCalledWith(
         '%c[ItunesRepository] Error fetching most popular podcasts:',
         'color: red;',
@@ -73,9 +74,10 @@ describe('ItunesRepository', () => {
       const error = new Error('Not found');
       vi.mocked(fetchWithCors).mockRejectedValue(error);
 
-      const result = await ItunesRepository.getPodcastById('999');
+      await expect(ItunesRepository.getPodcastById('999')).rejects.toThrow(
+        error
+      );
 
-      expect(result).toBeUndefined();
       expect(console.error).toHaveBeenCalledWith(
         '%c[ItunesRepository] Error fetching podcast by ID:',
         'color: red;',

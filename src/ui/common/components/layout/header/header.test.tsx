@@ -8,23 +8,23 @@ vi.mock('@tanstack/react-query', () => ({
   useIsFetching: vi.fn(),
 }));
 
-vi.mock('../box', () => ({
+vi.mock('@/ui/common/components/box/box', () => ({
   Box: ({ children }: { children: React.ReactNode }) => (
     <div data-testid="box">{children}</div>
   ),
 }));
 
-vi.mock('../inline', () => ({
+vi.mock('@/ui/common/components/inline/inline', () => ({
   Inline: ({ children }: { children: React.ReactNode }) => (
     <div data-testid="inline">{children}</div>
   ),
 }));
 
-vi.mock('../loading-dot', () => ({
+vi.mock('@/ui/common/components/layout/loading-dot/loading-dot', () => ({
   LoadingDot: () => <div data-testid="loading-dot">Loading...</div>,
 }));
 
-vi.mock('../main-title', () => ({
+vi.mock('@/ui/common/components/layout/main-title/main-title', () => ({
   MainTitle: () => <div data-testid="main-title">Main Title</div>,
 }));
 

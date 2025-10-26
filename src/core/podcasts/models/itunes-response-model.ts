@@ -141,22 +141,13 @@ export interface ItunesLookupResult {
 
 export interface ITunesEpisode {
   artworkUrl600: string;
-  artistIds: number[];
-  episodeGuid: string;
   releaseDate: string;
   trackId: number;
   trackName: string;
-  trackViewUrl: string;
   trackTimeMillis: number;
-  shortDescription: string;
-  closedCaptioning: string;
   collectionId: number;
   collectionName: string;
   kind: string;
   description: string;
-  country: string;
-  previewUrl: string;
-  artworkUrl160: string;
   episodeUrl: string;
-  episodeFileExtension: string;
 }

@@ -7,7 +7,7 @@ vi.mock('react-router-dom', () => ({
   ScrollRestoration: () => <div data-testid="scroll-restoration" />,
 }));
 
-vi.mock('@/ui/common/components/header', () => ({
+vi.mock('@/ui/common/components/layout/header/header', () => ({
   Header: () => <header data-testid="header">Header Content</header>,
 }));
 

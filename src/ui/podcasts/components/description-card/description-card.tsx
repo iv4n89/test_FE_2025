@@ -20,13 +20,15 @@ export const DescriptionCard = ({
   const LinkContainer = isLinksActive
     ? ({ children }: { children: React.ReactNode }) => (
         <Link
-          style={{ textDecoration: 'none' }}
+          className={styles.podcast_description_card__link}
           to={`/podcast/${data.collectionId}`}
         >
           {children}
         </Link>
       )
-    : ({ children }: { children: React.ReactNode }) => <>{children}</>;
+    : ({ children }: { children: React.ReactNode }) => (
+        <div className={styles.podcast_description_card__link}>{children}</div>
+      );
 
   return (
     <ShadowedBox

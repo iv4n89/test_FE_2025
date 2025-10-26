@@ -4,7 +4,7 @@ import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import Episode from './episode';
 import { useEpisodeDetails } from '../hooks/use-episode-details/use-episode-details';
 
-vi.mock('../hooks/use-episode-details', () => ({
+vi.mock('../hooks/use-episode-details/use-episode-details', () => ({
   useEpisodeDetails: vi.fn(),
 }));
 

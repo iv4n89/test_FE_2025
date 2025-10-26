@@ -124,6 +124,10 @@ Se mantiene siempre una cobertura superior al 80%.
 
 Los tests verifican comportamiento, no implementación, facilitando refactorización sin romper tests.
 
+| File      | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s |
+| --------- | ------- | -------- | ------- | ------- | ----------------- |
+| All files | 96.66   | 84.09    | 96.36   | 96.59   |
+
 ## Características destacadas
 
 - **Caché persistente**: Los datos se almacenan 24 horas.

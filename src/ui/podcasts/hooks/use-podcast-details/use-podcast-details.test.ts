@@ -8,7 +8,7 @@ vi.mock('@tanstack/react-query', () => ({
   useSuspenseQuery: vi.fn(),
 }));
 
-vi.mock('../use-popular-podcasts', () => ({
+vi.mock('../use-popular-podcasts/use-popular-podcasts', () => ({
   usePopularPodcasts: vi.fn(),
 }));
 

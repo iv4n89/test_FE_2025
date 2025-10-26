@@ -6,16 +6,19 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-vi.mock('@/ui/podcasts/hooks/use-popular-podcasts');
-vi.mock('@/ui/podcasts/hooks/use-podcast-search');
-vi.mock('@/ui/podcasts/components/popular-cards-grid', () => ({
-  PopularCardsGrid: ({ data }: { data: Entry[] | undefined }) => (
-    <div data-testid="popular-cards-grid">
-      {data?.length ? `${data.length} podcasts` : 'No podcasts'}
-    </div>
-  ),
-}));
-vi.mock('@/ui/podcasts/components/search-bar', () => ({
+vi.mock('@/ui/podcasts/hooks/use-popular-podcasts/use-popular-podcasts');
+vi.mock('@/ui/podcasts/hooks/use-podcast-search/use-podcast-search');
+vi.mock(
+  '@/ui/podcasts/components/preview-card/preview-grid/preview-grid',
+  () => ({
+    PreviewGrid: ({ data }: { data: Entry[] | undefined }) => (
+      <div data-testid="popular-cards-grid">
+        {data?.length ? `${data.length} podcasts` : 'No podcasts'}
+      </div>
+    ),
+  })
+);
+vi.mock('@/ui/podcasts/components/search-bar/search-bar', () => ({
   SearchBar: ({
     onChange,
     value,
