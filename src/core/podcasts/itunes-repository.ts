@@ -23,6 +23,7 @@ export const ItunesRepository = {
         'color: red;',
         error
       );
+      throw error;
     }
   },
   async getPodcastById(
@@ -34,7 +35,11 @@ export const ItunesRepository = {
         method: 'GET',
       });
 
-      if (!response || response.resultCount === 0) {
+      if (
+        !response ||
+        response.resultCount === 0 ||
+        response.results.length === 0
+      ) {
         throw new Error('No podcast found with the given ID');
       }
 
@@ -45,6 +50,7 @@ export const ItunesRepository = {
         'color: red;',
         error
       );
+      throw error;
     }
   },
 };

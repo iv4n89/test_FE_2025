@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import { ShadowedBox } from './index';
+import { ShadowedBox } from './shadowed-box';
 
 describe('ShadowedBox', () => {
   it('renders children correctly', () => {

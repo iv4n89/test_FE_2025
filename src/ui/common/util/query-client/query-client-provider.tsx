@@ -1,6 +1,6 @@
 import { createAsyncStoragePersister } from '@tanstack/query-async-storage-persister';
 import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client';
-import { queryClient } from '.';
+import { queryClient } from './query-client';
 
 const PERSISTER_KEY = 'react-query-podcasts-app';
 

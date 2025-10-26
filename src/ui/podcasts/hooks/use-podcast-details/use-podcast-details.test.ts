@@ -1,14 +1,14 @@
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { renderHook } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi, type Mock } from 'vitest';
-import { usePopularPodcasts } from '../use-popular-podcasts';
-import { usePodcastDetails } from './index';
+import { usePopularPodcasts } from '../use-popular-podcasts/use-popular-podcasts';
+import { usePodcastDetails } from './use-podcast-details';
 
 vi.mock('@tanstack/react-query', () => ({
   useSuspenseQuery: vi.fn(),
 }));
 
-vi.mock('../use-popular-podcasts', () => ({
+vi.mock('../use-popular-podcasts/use-popular-podcasts', () => ({
   usePopularPodcasts: vi.fn(),
 }));
 

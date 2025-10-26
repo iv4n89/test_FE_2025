@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import { HomeSkeleton } from './index';
+import { HomeSkeleton } from './home-skeleton';
 
 describe('HomeSkeleton', () => {
   it('renders the search bar skeleton', () => {

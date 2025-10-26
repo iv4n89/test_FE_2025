@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
-import { PodcastDetails } from '../components/podcast-details';
-import { usePodcastDetails } from '../hooks/use-podcast-details';
+import { PodcastDetails } from '../components/podcast-details/podcast-details';
+import { usePodcastDetails } from '../hooks/use-podcast-details/use-podcast-details';
 import React from 'react';
 
 export function PodcastDetail() {

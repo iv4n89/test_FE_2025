@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, type Mock } from 'vitest';
-import { sanitizeString } from './index';
+import { sanitizeString } from './sanitize-string';
 import DOMPurify from 'dompurify';
 
 vi.mock('dompurify', () => ({

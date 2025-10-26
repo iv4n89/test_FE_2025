@@ -2,9 +2,9 @@ import { render, screen } from '@testing-library/react';
 import { describe, it, expect, vi, type Mock } from 'vitest';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import Episode from './episode';
-import { useEpisodeDetails } from '../hooks/use-episode-details';
+import { useEpisodeDetails } from '../hooks/use-episode-details/use-episode-details';
 
-vi.mock('../hooks/use-episode-details', () => ({
+vi.mock('../hooks/use-episode-details/use-episode-details', () => ({
   useEpisodeDetails: vi.fn(),
 }));
 
