@@ -1,7 +1,4 @@
 .podcast_description_card__container {
-    background-color: var(--primary-background-color);
-    border-radius: var(--main-border-radius);
-    box-shadow: var(--box-shadow-default);
     padding: 20px;
     max-width: 300px;
 }

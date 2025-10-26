@@ -1,11 +1,4 @@
 .podcast_details_episode_count_badge__container {
-    background-color: var(--primary-background-color);
-    border-radius: 4px;
-    box-shadow: var(--box-shadow-default);
-    padding: 12px 16px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
     font-size: 16px;
     font-weight: bold;
 }

@@ -1,11 +1,3 @@
-.podcast_details_episode_table__container {
-  background: var(--primary-background-color);
-  border-radius: 4px;
-  box-shadow: var(--box-shadow-default);
-  overflow: hidden;
-  padding: 16px;
-}
-
 .podcast_details_episode_table {
   width: 100%;
   border-collapse: collapse;

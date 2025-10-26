@@ -1,0 +1,7 @@
+.shadowed_box__container {
+  background: var(--primary-background-color);
+  border-radius: 4px;
+  box-shadow: var(--box-shadow-default);
+  overflow: hidden;
+  padding: 20px;
+}

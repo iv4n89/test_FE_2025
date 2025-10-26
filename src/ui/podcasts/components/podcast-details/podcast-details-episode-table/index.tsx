@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import styles from './podcast-details-episode-table.module.css';
 import { formatDate } from '@/ui/common/util/format-date';
 import { formatDuration } from '@/ui/common/util/format-duration';
+import { ShadowedBox } from '@/ui/common/components/shadowed-box';
 
 interface Props {
   episodes: Episode[];
@@ -10,7 +11,7 @@ interface Props {
 
 export const PodcastDetailsEpisodeTable = ({ episodes, podcastId }: Props) => {
   return (
-    <div className={styles.podcast_details_episode_table__container}>
+    <ShadowedBox>
       <table className={styles.podcast_details_episode_table}>
         <thead>
           <tr className={styles.podcast_details_episode_table__header}>
@@ -53,6 +54,6 @@ export const PodcastDetailsEpisodeTable = ({ episodes, podcastId }: Props) => {
           ))}
         </tbody>
       </table>
-    </div>
+    </ShadowedBox>
   );
 };

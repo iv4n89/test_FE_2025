@@ -1,0 +1,7 @@
+.podcast_details__container {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 60px;
+  padding: 0 20px;
+  align-items: start;
+}

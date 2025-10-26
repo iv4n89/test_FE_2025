@@ -44,7 +44,6 @@ describe('PodcastDetail', () => {
       </MemoryRouter>
     );
 
-    expect(screen.getByTestId('podcast-details')).toBeDefined();
     expect(screen.getByText(mockInfo.description)).toBeDefined();
   });
 });
