@@ -1,7 +1,7 @@
 {
   "name": "fe-tech-test",
   "private": true,
-  "version": "0.4.0",
+  "version": "0.5.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -24,8 +24,7 @@
     "dompurify": "^3.3.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "react-router-dom": "^7.9.4",
-    "rss-parser": "^3.13.0"
+    "react-router-dom": "^7.9.4"
   },
   "devDependencies": {
     "@commitlint/cli": "^20.1.0",

@@ -1,14 +1,17 @@
+import { useDocumentTitle } from '@/ui/common/hooks/use-document-title/use-document-title';
 import React, { startTransition } from 'react';
+import { HomeSkeleton } from '../components/home-skeleton/home-skeleton';
 import { PreviewGrid } from '../components/preview-card/preview-grid/preview-grid';
 import { SearchBar } from '../components/search-bar/search-bar';
 import { usePodcastSearch } from '../hooks/use-podcast-search/use-podcast-search';
 import { usePopularPodcasts } from '../hooks/use-popular-podcasts/use-popular-podcasts';
-import { HomeSkeleton } from '../components/home-skeleton/home-skeleton';
 
 export default function Home() {
   const { data: popularPodcasts, isLoading } = usePopularPodcasts();
   const { filteredPodcasts, resultCount, searchTerm, setSearchTerm } =
     usePodcastSearch(popularPodcasts);
+
+  useDocumentTitle('Podcaster - Popular podcasts');
 
   const handleSearch = (value: string) => {
     startTransition(() => {

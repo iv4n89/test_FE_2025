@@ -2,7 +2,18 @@
 
 Aplicación web para explorar y escuchar los 100 podcasts musicales más populares de Apple Podcasts.
 
+## Tabla de contenidos
+
+- [Inicio rápido](#inicio-rápido)
+- [Docker](#docker)
+- [Makefile](#makefile)
+- [CI/CD](#cicd)
+- [Arquitectura](#arquitectura)
+- [Testing](#testing)
+
 ## Inicio rápido
+
+### Instalación tradicional
 
 ```bash
 # Instalar dependencias
@@ -27,6 +38,84 @@ npm run lint          # Verificar código
 npm run lint:fix      # Corregir automáticamente
 npm run prettier      # Formatear código
 ```
+
+### Con Docker
+
+```bash
+# Construir imagen
+docker build -t podcaster .
+
+# Ejecutar contenedor
+docker run -d -p 8080:80 podcaster
+
+# La aplicación estará disponible en http://localhost:8080
+```
+
+### Con Makefile (alternativa rápida)
+
+```bash
+# Ver todos los comandos disponibles
+make help
+
+# Desarrollo
+make dev
+
+# Build y ejecutar en Docker
+make docker-build
+make docker-run
+```
+
+## Docker
+
+La aplicación incluye un Dockerfile multi-stage optimizado para producción.
+
+### Características del Dockerfile
+
+- **Multi-stage build**: Separa las etapas de build y producción
+- **Imagen base**: Node 20 Alpine para el build, Nginx Alpine para producción
+- **Optimización**: La imagen final solo contiene los archivos estáticos necesarios
+- **Nginx configurado** con:
+  - Compresión gzip
+  - Routing para SPA (todas las rutas redirigen a index.html)
+  - Cache de assets estáticos (1 año)
+  - Headers de seguridad
+  - Health check
+
+## Makefile
+
+El proyecto incluye un Makefile con comandos útiles para facilitar el desarrollo y deployment.
+
+### Comandos principales
+
+```bash
+make help           # Muestra todos los comandos disponibles
+make install        # Instala dependencias
+make dev            # Inicia servidor de desarrollo
+make build          # Build de producción
+make test           # Ejecuta tests
+make lint           # Verifica código
+make format         # Formatea código con Prettier
+make ci             # Ejecuta pipeline CI completo (lint + test + build)
+
+# Comandos Docker
+make docker-build   # Construye imagen Docker
+make docker-run     # Ejecuta contenedor Docker
+make docker-stop    # Detiene contenedor
+make docker-logs    # Muestra logs del contenedor
+make docker-clean   # Limpia imagen y contenedor
+make docker-rebuild # Reconstruye y ejecuta desde cero
+```
+
+## CI/CD
+
+El proyecto incluye un pipeline de CI/CD automatizado con GitHub Actions.
+
+### Pipeline de CI
+
+El pipeline se ejecuta automáticamente en:
+
+- Push a `main`, `develop` o ramas `feature/*` y `fix/*`
+- Pull requests a `main` o `develop`
 
 ## Arquitectura
 

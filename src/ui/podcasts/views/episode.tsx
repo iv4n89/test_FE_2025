@@ -1,3 +1,4 @@
+import { useDocumentTitle } from '@/ui/common/hooks/use-document-title/use-document-title';
 import { useParams } from 'react-router-dom';
 import { DescriptionCard } from '../components/description-card/description-card';
 import { DetailsContainer } from '../components/details-container/details-container';
@@ -14,6 +15,8 @@ export default function Episode() {
     episodeId: episodeId ?? '',
     podcastId: podcastId ?? '',
   });
+
+  useDocumentTitle(`Podcaster - Episode ${episode?.trackName}`);
 
   if (!episodeId || !podcastId) {
     return null;
