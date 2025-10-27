@@ -13,6 +13,10 @@ Aplicación web para explorar y escuchar los 100 podcasts musicales más popular
 
 ## Inicio rápido
 
+### Proyecto desplegado en Vercel
+
+Se puede acceder al proyecto desplegado en Vercel desde la siguiente URL: https://test-fe-2025.vercel.app/
+
 ### Instalación tradicional
 
 ```bash
