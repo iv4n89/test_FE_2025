@@ -12,7 +12,7 @@ COPY package*.json ./
 # Install dependencies (includes devDependencies needed for build)
 RUN npm ci
 
-# Copy .env file (required for build)
+# Copy .env file (required for build - Only for this tech test - Do NOT do this in real world)
 COPY .env .env
 
 # Copy source files
